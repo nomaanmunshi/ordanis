@@ -1,0 +1,16 @@
+ORDANIS V2 INTERFACE UPDATE
+
+Correct identity
+  Nomaan Munshi
+  https://github.com/nomaanmunshi
+
+Apply this update from the existing project root:
+
+  cd ~/Documents/"ordanis by nomaan munshi"/ordanis
+  docker compose down
+  unzip -o /path/to/ordanis-v2-interface-update.zip -d .
+  docker compose up --build
+
+The first build may take several minutes. Open http://localhost:3000 after the containers start.
+
+Showcase mode is clearly labelled and combines real backend records with sample interface records. To show backend records only, change VITE_DATA_MODE to live in docker-compose.yml and rebuild the console.

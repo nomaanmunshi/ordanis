@@ -1,0 +1,58 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ordanis
+      POSTGRES_USER: ordanis
+      POSTGRES_PASSWORD: ordanis
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ordanis"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - ordanis-data:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: .
+      dockerfile: ordanis-server/Dockerfile
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/ordanis
+      DB_USER: ordanis
+      DB_PASSWORD: ordanis
+      CORS_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:5173
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: .
+      dockerfile: ordanis-example-worker/Dockerfile
+    environment:
+      ORDANIS_HOST: server
+      ORDANIS_PORT: 9090
+      WORKER_NAME: example-worker
+    depends_on:
+      - server
+
+  console:
+    build:
+      context: .
+      dockerfile: ordanis-console/Dockerfile
+      args:
+        VITE_DATA_MODE: showcase
+        VITE_API_BASE_URL: /api
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+volumes:
+  ordanis-data:

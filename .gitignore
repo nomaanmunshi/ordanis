@@ -1,0 +1,12 @@
+**/build/
+.gradle/
+.idea/
+*.iml
+.env
+.DS_Store
+
+/gradle/wrapper/gradle-wrapper.jar
+**/node_modules/
+**/dist/
+playwright-report/
+test-results/

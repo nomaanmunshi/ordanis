@@ -1,0 +1,15 @@
+import { Clock3, Search } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useRuns, useWorkflows } from '../api/hooks'
+import { EmptyState, ErrorState, PageHeader, Panel } from '../components/Page'
+import { StatusBadge } from '../components/StatusBadge'
+
+export default function ExecutionsPage() {
+  const runs = useRuns(); const workflows = useWorkflows(); const [search, setSearch] = useState(''); const [status, setStatus] = useState('ALL')
+  const data = useMemo(() => (runs.data ?? []).filter((run) => { const name = workflows.data?.find((w) => w.id === run.workflowDefinitionId)?.name ?? ''; return (status === 'ALL' || run.status === status) && (`${run.id} ${name}`.toLowerCase().includes(search.toLowerCase())) }), [runs.data, workflows.data, search, status])
+  return <><PageHeader eyebrow="Runtime" title="Executions" description="Search workflow runs, inspect progress, and investigate failed tasks." />
+    <Panel className="toolbar-panel"><div className="list-toolbar"><label className="search-box"><Search size={16}/><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search execution ID or workflow" /></label><select value={status} onChange={(e) => setStatus(e.target.value)}><option value="ALL">All statuses</option><option>RUNNING</option><option>SUCCEEDED</option><option>FAILED</option><option>CANCELLED</option></select></div></Panel>
+    {runs.isError ? <ErrorState error={runs.error} retry={() => runs.refetch()} /> : data.length === 0 ? <EmptyState title="No executions found" description="Start a workflow or adjust the active filters." /> : <Panel><div className="table-wrap"><table><thead><tr><th>Execution ID</th><th>Workflow</th><th>Started</th><th>Duration</th><th>Progress</th><th>Status</th><th>Failed step</th></tr></thead><tbody>{data.map((run) => { const workflow = workflows.data?.find((w) => w.id === run.workflowDefinitionId); const done = run.tasks.filter((t) => t.status === 'SUCCEEDED').length; const failed = run.tasks.find((t) => t.status === 'FAILED' || t.status === 'TIMED_OUT'); const duration = run.finishedAt && run.startedAt ? `${Math.max(1, Math.round((new Date(run.finishedAt).getTime() - new Date(run.startedAt).getTime()) / 1000))}s` : 'Running'; return <tr key={run.id}><td><Link className="mono-link" to={`/console/executions/${run.id}`}>{run.id.slice(0, 12)}</Link></td><td><strong>{workflow?.name ?? run.workflowDefinitionId.slice(0, 8)}</strong><small>v{workflow?.version ?? '?'}</small></td><td><Clock3 size={14}/> {new Date(run.startedAt ?? run.createdAt).toLocaleString()}</td><td className="mono">{duration}</td><td><div className="progress-cell"><span><i style={{ width: `${run.tasks.length ? done / run.tasks.length * 100 : 0}%` }}/></span><small>{done}/{run.tasks.length}</small></div></td><td><StatusBadge status={run.status}/></td><td>{failed ? <code>{failed.taskKey}</code> : 'Not applicable'}</td></tr>})}</tbody></table></div></Panel>}
+  </>
+}

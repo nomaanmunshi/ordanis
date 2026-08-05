@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package ordanis.worker.v1;
+
+option java_multiple_files = true;
+option java_package = "dev.ordanis.protocol.worker.v1";
+option java_outer_classname = "WorkerGatewayProto";
+
+service WorkerGateway {
+  rpc RegisterWorker(RegisterWorkerRequest) returns (RegisterWorkerResponse);
+  rpc LeaseTask(LeaseTaskRequest) returns (LeaseTaskResponse);
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc ReportProgress(ProgressRequest) returns (Ack);
+  rpc CompleteTask(CompleteTaskRequest) returns (Ack);
+  rpc FailTask(FailTaskRequest) returns (Ack);
+}
+
+message RegisterWorkerRequest {
+  string worker_id = 1;
+  string name = 2;
+  repeated string capabilities = 3;
+  int32 max_slots = 4;
+}
+
+message RegisterWorkerResponse {
+  string worker_id = 1;
+}
+
+message LeaseTaskRequest {
+  string worker_id = 1;
+  int32 lease_seconds = 2;
+}
+
+message LeaseTaskResponse {
+  bool found = 1;
+  string task_run_id = 2;
+  string workflow_run_id = 3;
+  string task_key = 4;
+  string type = 5;
+  string handler = 6;
+  string payload_json = 7;
+  string lease_token = 8;
+  int32 attempt = 9;
+  int32 timeout_seconds = 10;
+  int64 lease_until_epoch_millis = 11;
+}
+
+message HeartbeatRequest {
+  string worker_id = 1;
+  string task_run_id = 2;
+  string lease_token = 3;
+  int32 lease_seconds = 4;
+}
+
+message HeartbeatResponse {
+  bool accepted = 1;
+  bool cancel_requested = 2;
+  int64 lease_until_epoch_millis = 3;
+}
+
+message ProgressRequest {
+  string worker_id = 1;
+  string task_run_id = 2;
+  string lease_token = 3;
+  int32 percent = 4;
+  string message = 5;
+}
+
+message CompleteTaskRequest {
+  string worker_id = 1;
+  string task_run_id = 2;
+  string lease_token = 3;
+  string result_json = 4;
+}
+
+message FailTaskRequest {
+  string worker_id = 1;
+  string task_run_id = 2;
+  string lease_token = 3;
+  string error_message = 4;
+  bool retryable = 5;
+}
+
+message Ack {
+  bool accepted = 1;
+  string message = 2;
+}

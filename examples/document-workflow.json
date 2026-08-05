@@ -1,0 +1,62 @@
+{
+  "name": "document-analysis",
+  "tasks": [
+    {
+      "id": "upload",
+      "type": "JAVA",
+      "handler": "echo",
+      "payload": {
+        "stage": "upload"
+      }
+    },
+    {
+      "id": "virus-scan",
+      "type": "JAVA",
+      "handler": "sleep",
+      "dependsOn": [
+        "upload"
+      ],
+      "priority": 10,
+      "maxAttempts": 3,
+      "timeoutSeconds": 20,
+      "payload": {
+        "delayMs": 1500
+      }
+    },
+    {
+      "id": "extract-text",
+      "type": "JAVA",
+      "handler": "sleep",
+      "dependsOn": [
+        "upload"
+      ],
+      "priority": 5,
+      "payload": {
+        "delayMs": 1000
+      }
+    },
+    {
+      "id": "classify",
+      "type": "JAVA",
+      "handler": "uppercase",
+      "dependsOn": [
+        "virus-scan",
+        "extract-text"
+      ],
+      "payload": {
+        "value": "invoice"
+      }
+    },
+    {
+      "id": "notify",
+      "type": "JAVA",
+      "handler": "echo",
+      "dependsOn": [
+        "classify"
+      ],
+      "payload": {
+        "channel": "email"
+      }
+    }
+  ]
+}

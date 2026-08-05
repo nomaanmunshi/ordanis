@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07100f" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem('ordanis-theme')
+        const theme = saved === 'light' || saved === 'dark' ? saved : 'dark'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#07100f' : '#f7f4ee')
+      })()
+    </script>
+    <link rel="icon" href="/ordanis-mark.svg" type="image/svg+xml" />
+    <meta name="description" content="Ordanis is a distributed workflow and execution platform by Nomaan Munshi." />
+    <title>Ordanis | Distributed Workflow Execution</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
