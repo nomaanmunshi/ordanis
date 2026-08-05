@@ -13,5 +13,5 @@ document.querySelector('meta[name="theme-color"]')?.setAttribute('content', init
 const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 2_000, retry: (count, error) => { const status = typeof error === 'object' && error && 'status' in error ? Number(error.status) : 500; return status >= 500 && count < 2 } }, mutations: { retry: false } } })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode><QueryClientProvider client={queryClient}><BrowserRouter><App/></BrowserRouter></QueryClientProvider></React.StrictMode>,
+  <React.StrictMode><QueryClientProvider client={queryClient}><BrowserRouter basename={import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')}><App/></BrowserRouter></QueryClientProvider></React.StrictMode>,
 )
