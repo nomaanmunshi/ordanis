@@ -35,11 +35,10 @@ jobs:
       - name: Build Ordanis
         working-directory: ordanis-console
         env:
-          VITE_BASE_PATH: /ordanis/
           VITE_DATA_MODE: fixture
           VITE_API_BASE_URL: /api
         run: |
-          npm run build
+          npm run build -- --base=/ordanis/
           cp dist/index.html dist/404.html
 
       - name: Configure GitHub Pages
