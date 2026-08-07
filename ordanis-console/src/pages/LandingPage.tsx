@@ -92,7 +92,7 @@ export default function LandingPage() {
         <article>
           <span>03</span>
           <h3>Now it is becoming a collaborative product</h3>
-          <p>The project is still intentionally small. Product engineering stays close to the execution core, while testing and release feedback add a second perspective as the platform matures.</p>
+          <p>The project is still intentionally small. Product engineering stays close to the execution core, while quality engineering, failure-path testing, and release validation provide an independent second perspective as the platform matures.</p>
         </article>
       </div>
     </motion.section>
@@ -112,11 +112,11 @@ export default function LandingPage() {
         <article className="team-card">
           <div className="team-avatar">SH</div>
           <div className="team-card-head">
-            <div><h3>Shehryar Hassan</h3><span>Testing & QA Contributor</span></div>
+            <div><h3>Shehryar Hassan</h3><span>Quality Engineering & Release Contributor</span></div>
             <a href="https://www.linkedin.com/in/mian-shehryar-hassan-60477a207/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
-          <p>Supports workflow testing, regression checks, and release feedback so product behaviour is reviewed from more than one perspective.</p>
-          <div className="team-focus"><span>QA</span><span>Regression testing</span><span>Release feedback</span></div>
+          <p>Contributes to Ordanis reliability through end-to-end workflow validation, regression testing, failure-path checks, release verification, and product feedback. His testing helps catch execution and interface issues before changes are shipped.</p>
+          <div className="team-focus"><span>Quality engineering</span><span>Failure-path testing</span><span>Regression testing</span><span>Release validation</span></div>
         </article>
       </div>
     </motion.section>
