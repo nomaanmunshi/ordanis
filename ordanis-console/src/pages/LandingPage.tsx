@@ -28,7 +28,6 @@ export default function LandingPage() {
           <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={14} />Source on GitHub</a>
           <a href="#architecture">Inspect the architecture</a>
         </div>
-        <div className="owner-line"><span>NM</span><div><strong>Built by Nomaan Munshi</strong><small>Java backend, distributed execution, frontend console</small></div></div>
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.08 }}>
         <InteractiveSurface className="hero-visual"><InteractiveHeroGraph /></InteractiveSurface>
@@ -75,6 +74,51 @@ export default function LandingPage() {
         ['Media processing',['Upload','Thumbnail','Metadata','Publish']],
         ['Document processing',['Extract','Redact','Classify','Approve']],
       ].map(([title, steps]) => <article key={title as string}><strong>{title as string}</strong><div>{(steps as string[]).map((step, i) => <span key={step}>{step}{i < (steps as string[]).length - 1 && <ArrowRight size={12} />}</span>)}</div></article>)}</div>
+    </motion.section>
+
+    <motion.section {...reveal} className="marketing-section story-section" id="story">
+      <div className="section-heading"><span className="eyebrow">Our story</span><h2>Ordanis started with one question: what makes background work reliable when things fail?</h2></div>
+      <div className="story-layout">
+        <article className="story-lead">
+          <span>01</span>
+          <h3>From a systems experiment to a platform</h3>
+          <p>It began as a systems engineering project focused on the parts of background execution that are easy to hide behind a queue. Dependencies, leasing, retries, worker crashes, durable state, cancellation, and recovery quickly became the real problem.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>We kept the hard parts visible</h3>
+          <p>Instead of turning it into another task dashboard, Ordanis grew around an execution engine, a worker protocol, and an operations console that make those decisions observable.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Now it is becoming a collaborative product</h3>
+          <p>The project is still intentionally small. Product engineering stays close to the execution core, while testing and release feedback add a second perspective as the platform matures.</p>
+        </article>
+      </div>
+    </motion.section>
+
+    <motion.section {...reveal} className="marketing-section about-section" id="about">
+      <div className="section-heading"><span className="eyebrow">About us</span><h2>A small team, with clear ownership.</h2><p>Ordanis is built as a serious engineering product. Roles stay simple so contributions remain easy to understand.</p></div>
+      <div className="team-grid">
+        <article className="team-card team-lead">
+          <div className="team-avatar">NM</div>
+          <div className="team-card-head">
+            <div><h3>Nomaan Munshi</h3><span>Founder & Lead Engineer</span></div>
+            <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <p>Leads product direction and the core engineering work across the execution engine, Java backend, scheduling model, worker protocol, frontend console, and platform architecture.</p>
+          <div className="team-focus"><span>Execution engine</span><span>Backend architecture</span><span>Product</span><span>Frontend console</span></div>
+        </article>
+        <article className="team-card">
+          <div className="team-avatar">SH</div>
+          <div className="team-card-head">
+            <div><h3>Shehryar Hassan</h3><span>Testing & QA Contributor</span></div>
+            <a href="https://www.linkedin.com/in/mian-shehryar-hassan-60477a207/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <p>Supports workflow testing, regression checks, and release feedback so product behaviour is reviewed from more than one perspective.</p>
+          <div className="team-focus"><span>QA</span><span>Regression testing</span><span>Release feedback</span></div>
+        </article>
+      </div>
     </motion.section>
 
     <motion.section {...reveal} className="marketing-section recruiter-cta" id="docs">

@@ -1058,3 +1058,159 @@ html[data-theme='dark'] .scroll-atmosphere i:nth-child(3) { background: #A85A36;
 @media (prefers-reduced-motion: reduce) {
   .hero::before { filter: none; }
 }
+
+/* ordanis-team-story:update:start */
+.brand-logo-shell {
+  height: 44px;
+  min-width: 148px;
+  padding: 5px 10px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand-logo-image {
+  display: block;
+  width: 148px;
+  height: auto;
+  object-fit: contain;
+}
+html[data-theme='dark'] .brand-logo-shell {
+  background: rgba(255, 253, 248, .94);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.5), 0 7px 22px rgba(0,0,0,.16);
+}
+.marketing-footer .brand-logo-shell { height: 42px; }
+.story-section, .about-section { scroll-margin-top: 90px; }
+.story-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 14px;
+}
+.story-layout article {
+  min-height: 285px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--elevated);
+  box-shadow: var(--shadow-sm);
+}
+.story-layout article > span {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  color: var(--brand);
+  background: var(--brand-soft);
+  font: 700 10px 'JetBrains Mono';
+}
+.story-layout h3 {
+  margin: 30px 0 13px;
+  max-width: 390px;
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.story-layout p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.story-lead {
+  background:
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 38%),
+    var(--elevated) !important;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1.35fr .85fr;
+  gap: 14px;
+}
+.team-card {
+  position: relative;
+  min-height: 315px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--elevated);
+  box-shadow: var(--shadow-sm);
+}
+.team-lead {
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--brand) 11%, transparent), transparent 34%),
+    var(--elevated);
+}
+.team-avatar {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 22px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  background: var(--brand-soft);
+  font: 750 13px 'JetBrains Mono';
+}
+.team-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.team-card h3 {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: -.025em;
+}
+.team-card-head span {
+  display: block;
+  margin-top: 6px;
+  color: var(--brand);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+.team-card-head > a {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 10px;
+  font-weight: 650;
+}
+.team-card-head > a:hover {
+  color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--border));
+}
+.team-card > p {
+  max-width: 700px;
+  margin: 20px 0 24px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.team-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.team-focus span {
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  background: var(--surface);
+  font: 9px 'JetBrains Mono';
+}
+@media (max-width: 860px) {
+  .story-layout, .team-grid { grid-template-columns: 1fr; }
+  .story-layout article, .team-card { min-height: 0; }
+}
+@media (max-width: 720px) {
+  .brand-logo-image { width: 124px; }
+  .brand-logo-shell { min-width: 124px; padding-inline: 6px; }
+  .team-card-head { flex-direction: column; gap: 12px; }
+}
+/* ordanis-team-story:update:end */

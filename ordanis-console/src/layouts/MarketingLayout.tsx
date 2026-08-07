@@ -38,7 +38,8 @@ export default function MarketingLayout() {
       <nav className={open ? 'open' : ''} aria-label="Public navigation">
         <a href="#product" onClick={() => setOpen(false)}>Product</a>
         <a href="#architecture" onClick={() => setOpen(false)}>Architecture</a>
-        <a href="#engineering" onClick={() => setOpen(false)}>Engineering</a>
+        <a href="#story" onClick={() => setOpen(false)}>Story</a>
+        <a href="#about" onClick={() => setOpen(false)}>About</a>
         <a href="#use-cases" onClick={() => setOpen(false)}>Use cases</a>
         <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={15} />GitHub</a>
         <ThemeToggle compact />
@@ -49,7 +50,7 @@ export default function MarketingLayout() {
     <main><Outlet /></main>
     <footer className="marketing-footer">
       <Brand />
-      <p>Distributed execution built for failure. Designed and engineered by Nomaan Munshi.</p>
+      <p>Distributed workflow infrastructure built by a small engineering team.</p>
       <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={14} />GitHub</a>
     </footer>
   </div>
