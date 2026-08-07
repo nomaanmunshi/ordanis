@@ -40,7 +40,7 @@ export default function MarketingLayout() {
         <a href="#architecture" onClick={() => setOpen(false)}>Architecture</a>
         <a href="#engineering" onClick={() => setOpen(false)}>Engineering</a>
         <a href="#use-cases" onClick={() => setOpen(false)}>Use cases</a>
-        <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><Github size={15} />GitHub</a>
+        <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={15} />GitHub</a>
         <ThemeToggle compact />
         <Link className="nav-launch" to="/console" onClick={() => setOpen(false)}>Launch console</Link>
       </nav>
@@ -50,7 +50,7 @@ export default function MarketingLayout() {
     <footer className="marketing-footer">
       <Brand />
       <p>Distributed execution built for failure. Designed and engineered by Nomaan Munshi.</p>
-      <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><Github size={14} />GitHub</a>
+      <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={14} />GitHub</a>
     </footer>
   </div>
 }

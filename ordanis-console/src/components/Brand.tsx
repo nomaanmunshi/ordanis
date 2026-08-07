@@ -5,13 +5,9 @@ export function Brand({ compact = false }: { compact?: boolean }) {
     <Link to="/" className="brand" aria-label="Ordanis home">
       <span className="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 48 48" focusable="false">
-          <circle cx="23" cy="24" r="10.5" />
-          <path d="M33.5 24H40" />
-          <path d="M10 16h5.5" />
-          <path d="M10 32h5.5" />
-          <circle cx="8.5" cy="16" r="2.5" />
-          <circle cx="8.5" cy="32" r="2.5" />
-          <circle cx="41.5" cy="24" r="2.5" />
+          <path d="M24 5 40 14v20L24 43 8 34V14L24 5Z" />
+          <path d="M24 12 33 17v14l-9 5-9-5V17l9-5Z" />
+          <path d="M8 24h7M33 24h7" />
         </svg>
       </span>
       {!compact && <span className="brand-copy"><strong>Ordanis</strong><small>by Nomaan Munshi</small></span>}

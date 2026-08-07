@@ -13,7 +13,7 @@ export function ThemeToggle({ compact = false }: { compact?: boolean }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('ordanis-theme', theme)
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#07100f' : '#f7f4ee')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1A1614' : '#FAF9F7')
   }, [theme])
 
   const next = theme === 'light' ? 'dark' : 'light'

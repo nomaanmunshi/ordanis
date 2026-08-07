@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#07100f" />
+    <meta name="theme-color" content="#1A1614" />
     <script>
       (() => {
         const saved = localStorage.getItem('ordanis-theme')
         const theme = saved === 'light' || saved === 'dark' ? saved : 'dark'
         document.documentElement.dataset.theme = theme
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#07100f' : '#f7f4ee')
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1A1614' : '#FAF9F7')
       })()
     </script>
     <link rel="icon" href="/ordanis-mark.svg" type="image/svg+xml" />

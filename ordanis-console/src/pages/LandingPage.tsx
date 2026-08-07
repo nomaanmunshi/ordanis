@@ -25,7 +25,7 @@ export default function LandingPage() {
           <a className="button secondary large" href="#engineering">View engineering case study</a>
         </div>
         <div className="hero-links">
-          <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><Github size={14} />Nomaan on GitHub</a>
+          <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={14} />Source on GitHub</a>
           <a href="#architecture">Inspect the architecture</a>
         </div>
         <div className="owner-line"><span>NM</span><div><strong>Built by Nomaan Munshi</strong><small>Java backend, distributed execution, frontend console</small></div></div>
@@ -45,7 +45,7 @@ export default function LandingPage() {
     </motion.section>
 
     <motion.section {...reveal} className="marketing-section engineering-section" id="engineering">
-      <div className="section-heading"><span className="eyebrow">Engineering case study</span><h2>Built to demonstrate backend correctness, not dashboard decoration.</h2><p>The public site explains the product. The console and repository show the actual distributed systems work behind it.</p></div>
+      <div className="section-heading"><span className="eyebrow">Engineering case study</span><h2>Built around backend correctness, not dashboard decoration.</h2><p>The public site explains the product. The console and repository expose the distributed systems work behind it.</p></div>
       <div className="engineering-grid">
         <article><Code2 /><span>01</span><strong>DAG compiler</strong><p>Parses workflow definitions, rejects missing dependencies and cycles, then calculates executable concurrency levels.</p><small>Graph validation · topological planning</small></article>
         <article><GitBranch /><span>02</span><strong>Lease scheduler</strong><p>Uses atomic PostgreSQL row locking to prevent concurrent workers from leasing the same eligible task.</p><small>SKIP LOCKED · capacity matching</small></article>
@@ -78,7 +78,7 @@ export default function LandingPage() {
     </motion.section>
 
     <motion.section {...reveal} className="marketing-section recruiter-cta" id="docs">
-      <div><span className="eyebrow">Recruiter brief</span><h2>The product story and engineering evidence are connected.</h2><p>Open the console to inspect workflows, live execution state, worker health, failure handling, and the visual DAG builder. Visit the GitHub profile for the broader engineering portfolio.</p><div className="hero-actions"><Link className="button primary" to="/console"><TerminalSquare size={16} />Open console</Link><a className="button secondary" href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><Github size={16} />GitHub profile</a></div></div>
+      <div><span className="eyebrow">Platform brief</span><h2>The product story and engineering evidence are connected.</h2><p>Open the console to inspect workflows, live execution state, worker health, failure handling, and the visual DAG builder. Visit the repository for implementation details and the complete source.</p><div className="hero-actions"><Link className="button primary" to="/console"><TerminalSquare size={16} />Open console</Link><a className="button secondary" href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={16} />Source repository</a></div></div>
       <div className="statement-card"><Brand /><blockquote>Ordanis provides at-least-once task delivery and supports idempotent handlers and compensation for safe recovery.</blockquote><span>Execution contract</span></div>
     </motion.section>
   </>
