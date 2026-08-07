@@ -1,3 +1,4 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 # Ordanis
 
 **A distributed workflow and execution platform built by Nomaan Munshi.**
@@ -928,3 +929,7 @@ These documents cover:
 GitHub: [github.com/nomaanmunshi](https://github.com/nomaanmunshi)
 
 Repository: [github.com/nomaanmunshi/ordanis](https://github.com/nomaanmunshi/ordanis)
+
+## License
+
+Ordanis is open source under the [MIT License](LICENSE).
