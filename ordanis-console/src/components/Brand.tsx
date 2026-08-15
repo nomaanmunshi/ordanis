@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom'
 
+export function OrdanisMark({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+      <path d="M11 15.5 24 8l13 7.5v17L24 40l-13-7.5v-17Z" className="mark-frame" />
+      <path d="M16 18h10.5L32 23.5 26.5 29H16" className="mark-flow" />
+      <path d="M21 14.5 15.5 23.5 21 33.5" className="mark-flow mark-flow-secondary" />
+    </svg>
+  )
+}
+
 export function Brand({ compact = false }: { compact?: boolean }) {
   return (
     <Link to="/" className={`brand ${compact ? 'compact' : ''}`} aria-label="Ordanis home">
-      {compact ? (
-        <span className="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" focusable="false">
-            <path d="M24 5 40 14v20L24 43 8 34V14L24 5Z" />
-            <path d="M24 12 33 17v14l-9 5-9-5V17l9-5Z" />
-            <path d="M8 24h7M33 24h7" />
-          </svg>
-        </span>
-      ) : (
-        <span className="brand-logo-shell">
-          <img className="brand-logo-image" src={`${import.meta.env.BASE_URL}ordanis-logo.png`} alt="Ordanis" />
-        </span>
-      )}
+      <span className="brand-symbol"><OrdanisMark /></span>
+      {!compact && <span className="brand-word">Ordanis</span>}
     </Link>
   )
 }

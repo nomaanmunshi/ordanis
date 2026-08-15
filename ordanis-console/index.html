@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1A1614" />
+    <meta name="theme-color" content="#171310" />
     <script>
       (() => {
         const saved = localStorage.getItem('ordanis-theme')
         const theme = saved === 'light' || saved === 'dark' ? saved : 'dark'
         document.documentElement.dataset.theme = theme
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#1A1614' : '#FAF9F7')
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#171310' : '#F8F3EA')
       })()
     </script>
     <link rel="icon" href="/ordanis-mark.svg" type="image/svg+xml" />
-    <meta name="description" content="Ordanis is a distributed workflow and execution platform by Nomaan Munshi." />
-    <title>Ordanis | Distributed Workflow Execution</title>
+    <meta name="description" content="Ordanis is a distributed workflow and execution platform for durable coordination, worker leasing, observability, and failure recovery." />
+    <title>Ordanis | Distributed Workflow Infrastructure</title>
   </head>
   <body>
     <div id="root"></div>

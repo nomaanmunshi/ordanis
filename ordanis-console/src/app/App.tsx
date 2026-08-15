@@ -1,7 +1,8 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import MarketingLayout from '../layouts/MarketingLayout'
 import ConsoleLayout from '../layouts/ConsoleLayout'
+import { StartupLoader } from '../components/StartupLoader'
 
 const LandingPage = lazy(() => import('../pages/LandingPage'))
 const OverviewPage = lazy(() => import('../pages/OverviewPage'))
@@ -19,7 +20,16 @@ const SettingsPage = lazy(() => import('../pages/SettingsPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
 
 export default function App() {
-  return <Suspense fallback={<div className="app-loading"><div className="brand-mark"><i/><i/><i/></div><span>Loading Ordanis…</span></div>}><Routes>
+  const [booting, setBooting] = useState(true)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setBooting(false), 850)
+    return () => window.clearTimeout(timer)
+  }, [])
+
+  if (booting) return <StartupLoader />
+
+  return <Suspense fallback={<StartupLoader compact />}><Routes>
     <Route element={<MarketingLayout/>}><Route index element={<LandingPage/>}/></Route>
     <Route path="/console" element={<ConsoleLayout/>}>
       <Route index element={<OverviewPage/>}/>

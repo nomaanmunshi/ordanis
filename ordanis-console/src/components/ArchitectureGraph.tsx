@@ -1,4 +1,4 @@
-import { Background, Controls, Handle, Position, ReactFlow, useNodesState, type Edge, type Node, type NodeProps } from '@xyflow/react'
+import { Controls, Handle, Position, ReactFlow, useNodesState, type Edge, type Node, type NodeProps } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { Braces, Cpu, Database, FileBox, GitBranch, Network, Server } from 'lucide-react'
 
@@ -54,9 +54,8 @@ const nodeTypes = { architecture: ArchitectureNode }
 export function ArchitectureGraph() {
   const [graphNodes, , onNodesChange] = useNodesState<Node<ArchitectureNodeData>>(nodes)
   return <div className="architecture-flow" aria-label="Interactive Ordanis architecture diagram">
-    <div className="architecture-flow-head"><div><span className="connection-dot" />Architecture map</div><span>Drag nodes, pan, or zoom</span></div>
+    <div className="architecture-flow-head"><div>Architecture map</div><span>Drag nodes, pan, or zoom</span></div>
     <ReactFlow nodes={graphNodes} edges={edges} nodeTypes={nodeTypes} fitView fitViewOptions={{ padding: 0.2 }} minZoom={0.55} maxZoom={1.5} nodesConnectable={false} onNodesChange={onNodesChange} zoomOnScroll={false} preventScrolling={false} proOptions={{ hideAttribution: true }}>
-      <Background gap={25} size={1} />
       <Controls showInteractive={false} />
     </ReactFlow>
   </div>

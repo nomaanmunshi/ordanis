@@ -1,4 +1,4 @@
-import { Background, Controls, Handle, Position, ReactFlow, useNodesState, type Edge, type Node, type NodeProps } from '@xyflow/react'
+import { Controls, Handle, Position, ReactFlow, useNodesState, type Edge, type Node, type NodeProps } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { Check, FileInput, FileSearch, RefreshCw, ScanSearch, Send, ShieldCheck } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
@@ -89,11 +89,10 @@ export function InteractiveHeroGraph() {
   }), [nodes])
 
   return <div className="interactive-demo-graph">
-    <div className="demo-graph-head"><div><span className="connection-dot" />Interactive demo run</div><button onClick={() => setStage(0)}><RefreshCw size={14} />Replay</button></div>
-    <div className="demo-graph-status"><strong>{stageCopy[stage]}</strong><span>Drag nodes to inspect the graph layout</span></div>
+    <div className="demo-graph-head"><div>Interactive execution</div><button onClick={() => setStage(0)}>Replay</button></div>
+    <div className="demo-graph-status"><strong>{stageCopy[stage]}</strong><span>Drag nodes to inspect the layout</span></div>
     <div className="demo-graph-canvas">
       <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} onNodesChange={onNodesChange} fitView minZoom={0.45} maxZoom={1.45} nodesConnectable={false} zoomOnScroll={false} preventScrolling={false} proOptions={{ hideAttribution: true }}>
-        <Background gap={24} size={1} />
         <Controls showInteractive={false} />
       </ReactFlow>
     </div>
