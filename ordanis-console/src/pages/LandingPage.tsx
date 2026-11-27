@@ -4,6 +4,7 @@ import { Brand } from '../components/Brand'
 import { InteractiveSurface } from '../components/InteractiveSurface'
 import { ArchitectureGraph } from '../components/ArchitectureGraph'
 import { InteractiveHeroGraph } from '../components/InteractiveHeroGraph'
+import { ExecutionField } from '../components/ExecutionField'
 import { WorkflowScrollStory } from '../components/WorkflowScrollStory'
 
 const reveal = {
@@ -24,23 +25,28 @@ const proofItems = [
 
 export default function LandingPage() {
   return <>
-    <section className="hero" id="product">
-      <motion.div className="hero-copy" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.62 }}>
-        <span className="hero-kicker">Distributed workflow infrastructure</span>
-        <h1>Orchestrate work.<br /><em>Recover with confidence.</em></h1>
-        <p>Define, schedule, and inspect reliable workflows across Java workers, HTTP services, files, databases, and specialised compute workloads.</p>
+    <section className="signal-hero" id="overview">
+      <ExecutionField />
+      <motion.div className="signal-hero-copy" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
+        <span className="signal-kicker">Open-source workflow engine</span>
+        <h1>Workflows that<br /><em>outlast failure.</em></h1>
+        <p>Workers stop. Networks break. Your work needs a way forward.<br className="desktop-break" /> Define, run, and recover distributed workflows with Ordanis.</p>
         <div className="hero-actions">
-          <Link className="button primary large" to="/console">Open engineering console <span aria-hidden="true">→</span></Link>
-          <a className="button secondary large" href="#architecture">Inspect the architecture</a>
+          <Link className="button primary large" to="/console">Explore the console</Link>
+          <a className="button secondary large" href="#product">See how it works</a>
         </div>
-        <div className="hero-links">
-          <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer">Source on GitHub ↗</a>
-          <a href="#story">Read the engineering story</a>
-        </div>
+        <a className="signal-source" href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer">Built in Java. Open to inspection.</a>
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.08 }}>
-        <InteractiveSurface className="hero-visual"><InteractiveHeroGraph /></InteractiveSurface>
-      </motion.div>
+      <div className="signal-hero-foot"><span>Define the work.</span><span>Coordinate execution.</span><span>Recover when it fails.</span></div>
+    </section>
+
+    <section className="marketing-section execution-section" id="product">
+      <div className="execution-intro">
+        <div className="section-heading"><span className="eyebrow">The failure is part of the demo</span><h2>One worker stops.<br /><em>The workflow continues.</em></h2></div>
+        <p>Follow a document through parallel tasks, a missed heartbeat, and lease recovery. This illustrative simulation shows the execution model; open the console to inspect runs.</p>
+      </div>
+      <div className="execution-window"><div className="execution-window-bar"><span>document-analysis</span><span>Illustrative simulation</span></div><InteractiveHeroGraph /></div>
+      <div className="execution-contract"><span>Explicit guarantees</span><p>At-least-once delivery. Time-bound ownership. Handlers must tolerate repeated execution.</p></div>
     </section>
 
     <section className="proof-strip" aria-label="Reliability features">
@@ -48,7 +54,8 @@ export default function LandingPage() {
     </section>
 
     <motion.section {...reveal} className="marketing-section architecture" id="architecture">
-      <div className="section-heading"><span className="eyebrow">Platform architecture</span><h2>Control decisions stay separate from task execution.</h2><p>The scheduler owns durable coordination. Workers remain replaceable, capability-aware executors that can disappear without taking ownership state with them.</p></div>
+      <div className="section-heading"><span className="eyebrow">Platform architecture</span><h2>Coordination has a home.
+Execution can move.</h2><p>The scheduler owns durable coordination. Workers remain replaceable, capability-aware executors that can disappear without taking ownership state with them.</p></div>
       <InteractiveSurface className="architecture-diagram"><ArchitectureGraph /></InteractiveSurface>
     </motion.section>
 
@@ -60,7 +67,8 @@ export default function LandingPage() {
     </motion.section>
 
     <motion.section {...reveal} className="marketing-section recovery">
-      <div className="section-heading"><span className="eyebrow">Failure recovery</span><h2>A crashed worker does not own the task forever.</h2><p>Time-bound leases make work recoverable without pretending delivery is exactly once.</p></div>
+      <div className="section-heading"><span className="eyebrow">Failure recovery</span><h2>A worker can disappear.
+Its work should not.</h2><p>Time-bound leases make work recoverable without pretending delivery is exactly once.</p></div>
       <div className="recovery-track">{[
         ['Task assigned','scheduler to worker-a'],['Lease active','30-second ownership'],['Heartbeat missed','worker stops responding'],['Lease expired','task eligible again'],['Execution resumed','worker-b continues']
       ].map(([title, detail], i) => <article key={title} className={i === 2 ? 'danger-step' : i === 4 ? 'success-step' : ''}><span>{i + 1}</span><strong>{title}</strong><small>{detail}</small></article>)}</div>
@@ -98,7 +106,7 @@ export default function LandingPage() {
     </motion.section>
 
     <motion.section {...reveal} className="marketing-section recruiter-cta" id="docs">
-      <div><span className="eyebrow">Platform brief</span><h2>The product story and engineering evidence are connected.</h2><p>Open the console to inspect workflows, live execution state, worker health, failure handling, and the visual DAG builder. Visit the repository for implementation details and the complete source.</p><div className="hero-actions"><Link className="button primary" to="/console">Open console</Link><a className="button secondary" href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer">Source repository ↗</a></div></div>
+      <div><span className="eyebrow">Platform brief</span><h2>Go beyond the landing page.</h2><p>Open the console to inspect workflows, live execution state, worker health, failure handling, and the visual DAG builder. Visit the repository for implementation details and the complete source.</p><div className="hero-actions"><Link className="button primary" to="/console">Open console</Link><a className="button secondary" href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer">Read the source</a></div></div>
       <div className="statement-card"><Brand /><blockquote>At-least-once delivery, durable ownership, and recoverable execution are treated as explicit system contracts.</blockquote><span>Execution contract</span></div>
     </motion.section>
 
@@ -109,8 +117,8 @@ export default function LandingPage() {
         <p>Ordanis is a systems-engineering project by Nomaan Munshi, focused on reliable workflow execution, Java backend architecture, scheduling, worker coordination, and an inspectable operations console.</p>
       </div>
       <div className="builder-links">
-        <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><span>GitHub</span><b aria-hidden="true">↗</b></a>
-        <a href="https://www.linkedin.com/in/nomaan-munshi" target="_blank" rel="noreferrer"><span>LinkedIn</span><b aria-hidden="true">↗</b></a>
+        <a href="https://github.com/nomaanmunshi" target="_blank" rel="noreferrer"><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/nomaan-munshi" target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
       </div>
     </motion.section>
   </>
