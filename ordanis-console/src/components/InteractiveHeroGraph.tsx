@@ -2,6 +2,7 @@ import { Controls, Handle, Position, ReactFlow, useNodesState, type Edge, type N
 import '@xyflow/react/dist/style.css'
 import { Check, FileInput, FileSearch, RefreshCw, ScanSearch, Send, ShieldCheck } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 type DemoStatus = 'waiting' | 'running' | 'done' | 'recovering'
 
@@ -72,12 +73,15 @@ function statusFor(id: string, stage: number): { status: DemoStatus; detail: str
 
 export function InteractiveHeroGraph() {
   const [stage, setStage] = useState(0)
+  const reducedMotion = useReducedMotion()
+  const [playing, setPlaying] = useState(true)
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<DemoNodeData>>(baseNodes)
 
   useEffect(() => {
+    if (!playing || reducedMotion) return
     const timer = window.setInterval(() => setStage((value) => value >= 6 ? 0 : value + 1), 1900)
     return () => window.clearInterval(timer)
-  }, [])
+  }, [playing, reducedMotion])
 
   useEffect(() => {
     setNodes((items) => items.map((node) => ({ ...node, data: { ...node.data, ...statusFor(node.id, stage) } })))
@@ -85,11 +89,11 @@ export function InteractiveHeroGraph() {
 
   const edges = useMemo(() => baseEdges.map((edge) => {
     const target = nodes.find((node) => node.id === edge.target)
-    return { ...edge, animated: target?.data.status === 'running' || target?.data.status === 'recovering', className: target?.data.status === 'recovering' ? 'recovery-edge' : '' }
-  }), [nodes])
+    return { ...edge, animated: !reducedMotion && playing && (target?.data.status === 'running' || target?.data.status === 'recovering'), className: target?.data.status === 'recovering' ? 'recovery-edge' : '' }
+  }), [nodes, playing, reducedMotion])
 
   return <div className="interactive-demo-graph">
-    <div className="demo-graph-head"><div>Interactive execution</div><button onClick={() => setStage(0)}>Replay</button></div>
+    <div className="demo-graph-head"><div>Execution preview</div><div className="demo-playback">{!reducedMotion && <button onClick={() => setPlaying((value) => !value)}>{playing ? 'Pause' : 'Play'}</button>}<button onClick={() => { setPlaying(false); setStage((value) => (value + 1) % stageCopy.length) }}>Next step</button><button onClick={() => setStage(0)}>Replay</button></div></div>
     <div className="demo-graph-status"><strong>{stageCopy[stage]}</strong><span>Drag nodes to inspect the layout</span></div>
     <div className="demo-graph-canvas">
       <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} onNodesChange={onNodesChange} fitView minZoom={0.45} maxZoom={1.45} nodesConnectable={false} zoomOnScroll={false} preventScrolling={false} proOptions={{ hideAttribution: true }}>
