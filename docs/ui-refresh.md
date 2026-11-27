@@ -21,3 +21,11 @@ Version 0.2 focuses on a stronger engineering presentation without changing the 
 ## Data honesty
 
 Docker uses `showcase` mode for the first launch. It overlays clearly labelled sample workflows and telemetry beside real backend records. These records demonstrate the interface and are not benchmark claims. Use `VITE_DATA_MODE=live` to show backend records only.
+
+## Reference-inspired public site
+
+The public homepage now uses a centered typographic hero, a procedural animated point field, a compact floating header, and a dedicated execution demonstration. The green accent and original Ordanis mark distinguish it from the Retrace reference. Public styles live in `ordanis-console/src/marketing.css` and are scoped to `.retrace-direction`.
+
+The workflow demonstration is explicitly labelled as an illustrative simulation. Pause, replay, and manual stepping make the failure sequence inspectable. Reduced-motion preferences disable automatic progression and the particle animation; the canvas also stops when offscreen or the document is hidden. The operations console and API contracts retain their existing behaviour.
+
+Verification: TypeScript/Vite production build and the repository unit test passed. Desktop browser checks covered the hero, demo stepping, engineering anchor, and theme switching. Responsive CSS is included; mobile-device and reduced-motion browser emulation were not available in this session. The unit-test configuration now extends Vitest's default exclusions so dependency tests are not collected.

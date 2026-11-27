@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import App from './app/App'
 import './styles.css'
 import './refresh.css'
+import './marketing.css'
 
 const savedTheme = localStorage.getItem('ordanis-theme')
 const initialTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark'
