@@ -6,6 +6,7 @@ import App from './app/App'
 import './styles.css'
 import './refresh.css'
 import './marketing.css'
+import './interactions.css'
 
 const savedTheme = localStorage.getItem('ordanis-theme')
 const initialTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'dark'

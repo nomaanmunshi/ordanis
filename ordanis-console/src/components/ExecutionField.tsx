@@ -34,8 +34,8 @@ export function ExecutionField() {
             // Keep the central copy legible; density remains at the edges.
             const centre = Math.max(.08, Math.min(1, Math.abs(x - width / 2) / (width * .34)))
             context.fillStyle = light
-              ? `rgba(25,80,64,${(.12 + depth * .35) * edge * centre})`
-              : `rgba(158,209,186,${(.12 + depth * .57) * edge * centre})`
+              ? `rgba(123,96,58,${(.12 + depth * .35) * edge * centre})`
+              : `rgba(215,188,141,${(.12 + depth * .57) * edge * centre})`
             context.beginPath()
             context.arc(x, y, (.55 + depth * .75) * Math.max(.65, scale), 0, Math.PI * 2)
             context.fill()

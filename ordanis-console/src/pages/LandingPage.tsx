@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 import { Brand } from '../components/Brand'
 import { InteractiveSurface } from '../components/InteractiveSurface'
 import { ArchitectureGraph } from '../components/ArchitectureGraph'
-import { InteractiveHeroGraph } from '../components/InteractiveHeroGraph'
 import { ExecutionField } from '../components/ExecutionField'
 import { WorkflowScrollStory } from '../components/WorkflowScrollStory'
+import { ExecutionScrollStory } from '../components/ExecutionScrollStory'
+import { RobotShowcase } from '../components/RobotShowcase'
 
 const reveal = {
   initial: { opacity: 0, y: 28 },
@@ -40,18 +41,13 @@ export default function LandingPage() {
       <div className="signal-hero-foot"><span>Define the work.</span><span>Coordinate execution.</span><span>Recover when it fails.</span></div>
     </section>
 
-    <section className="marketing-section execution-section" id="product">
-      <div className="execution-intro">
-        <div className="section-heading"><span className="eyebrow">The failure is part of the demo</span><h2>One worker stops.<br /><em>The workflow continues.</em></h2></div>
-        <p>Follow a document through parallel tasks, a missed heartbeat, and lease recovery. This illustrative simulation shows the execution model; open the console to inspect runs.</p>
-      </div>
-      <div className="execution-window"><div className="execution-window-bar"><span>document-analysis</span><span>Illustrative simulation</span></div><InteractiveHeroGraph /></div>
-      <div className="execution-contract"><span>Explicit guarantees</span><p>At-least-once delivery. Time-bound ownership. Handlers must tolerate repeated execution.</p></div>
-    </section>
+    <ExecutionScrollStory />
 
     <section className="proof-strip" aria-label="Reliability features">
       {proofItems.map((item) => <span key={item}>{item}</span>)}
     </section>
+
+    <RobotShowcase />
 
     <motion.section {...reveal} className="marketing-section architecture" id="architecture">
       <div className="section-heading"><span className="eyebrow">Platform architecture</span><h2>Coordination has a home.

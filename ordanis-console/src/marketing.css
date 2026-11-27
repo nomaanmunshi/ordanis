@@ -1,16 +1,16 @@
 /* Scoped public-site direction; the operations console keeps its own theme. */
 html .marketing-root.retrace-direction {
-  --bg:#080b0a; --surface:#101513; --elevated:#121916; --muted:#1a231e;
-  --text:#f2f5f0; --text-2:#b8c2bb; --text-3:#91a097; --border:#27332c; --border-2:#45594d;
-  --brand:#c4f59b; --brand-2:#d8ffb6; --brand-soft:#c4f59b16;
-  --success:#a2d5b0; --success-soft:#a2d5b015; --info:#a5c8d8; --warning:#e1ba78;
+  --bg:#171310; --surface:#241E1A; --elevated:rgba(39,32,28,.78); --muted:#2E2722;
+  --text:#F6F0E8; --text-2:#C6B9AE; --text-3:#A99A8D; --border:rgba(248,237,226,.10); --border-2:rgba(248,237,226,.18);
+  --brand:#D7BC8D; --brand-2:#E6CCA0; --brand-soft:rgba(215,188,141,.12);
+  --success:#8FB69B; --success-soft:rgba(143,182,155,.12); --info:#A5B2BF; --warning:#D7AA76;
   color:var(--text); background:var(--bg) !important; overflow:clip;
 }
 html[data-theme] body .marketing-root.retrace-direction {background:var(--bg) !important}
 html[data-theme='light'] .marketing-root.retrace-direction {
-  --bg:#f6f8f5; --surface:#fff; --elevated:#f0f4ee; --muted:#e6ede3;
-  --text:#152119; --text-2:#4d5d51; --text-3:#5e7063; --border:#d2ded1; --border-2:#91a88f;
-  --brand:#346b3e; --brand-2:#24562d; --brand-soft:#346b3e12; --success:#36724c; --info:#3a637a; --warning:#986019;
+  --bg:#F8F3EA; --surface:#FFFDFC; --elevated:rgba(255,253,250,.82); --muted:#EFE8DE;
+  --text:#201B17; --text-2:#6F665F; --text-3:#786B60; --border:rgba(66,51,40,.12); --border-2:rgba(66,51,40,.20);
+  --brand:#B99B6B; --brand-2:#A98552; --brand-soft:rgba(185,155,107,.12); --success:#5C8E74; --info:#7D8E9E; --warning:#986019;
 }
 .retrace-direction ::selection {background:var(--brand);color:var(--bg)}
 .retrace-direction :focus-visible {outline:2px solid var(--brand);outline-offset:5px}
@@ -90,8 +90,8 @@ html[data-theme='light'] .marketing-root.retrace-direction {
 .retrace-direction .engine-reveal-meta {font-size:10px}
 .retrace-direction .engine-reveal-card-head>small {display:none}
 .retrace-direction .engine-reveal-status,.retrace-direction .engine-reveal-status small {font-size:12px}
-.retrace-direction .definition-grid pre {background:#0b100d;color:#d9e6dc;font-size:14px;line-height:1.8;border:1px solid var(--border);box-shadow:none}
-.retrace-direction .definition-grid pre span {color:#c4f59b}
+.retrace-direction .definition-grid pre {background:#1A1614;color:#F6F0E8;font-size:14px;line-height:1.8;border:1px solid var(--border);box-shadow:none}
+.retrace-direction .definition-grid pre span {color:#D7BC8D}
 .retrace-direction .compiled-head strong {font-size:17px}
 .retrace-direction .compiled-head small {font-size:13px}
 .retrace-direction .compiled-row strong {font-size:14px}

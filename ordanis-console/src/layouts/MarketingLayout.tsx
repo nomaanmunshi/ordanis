@@ -3,6 +3,7 @@ import { Github, Menu, X } from 'lucide-react'
 import { Link, Outlet } from 'react-router-dom'
 import { Brand } from '../components/Brand'
 import { ThemeToggle } from '../components/ThemeToggle'
+import { PointerExperience } from '../components/PointerExperience'
 
 export default function MarketingLayout() {
   const [scrolled, setScrolled] = useState(false)
@@ -16,6 +17,7 @@ export default function MarketingLayout() {
   }, [])
 
   return <div className="marketing-root retrace-direction">
+    <PointerExperience />
     <header className={`glass-nav ${scrolled ? 'scrolled' : ''}`}>
       <Brand />
       <nav id="public-navigation" className={open ? 'open' : ''} aria-label="Public navigation">
