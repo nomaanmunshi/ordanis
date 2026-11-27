@@ -15,23 +15,21 @@ export default function MarketingLayout() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return <div className="marketing-root">
+  return <div className="marketing-root retrace-direction">
     <header className={`glass-nav ${scrolled ? 'scrolled' : ''}`}>
       <Brand />
-      <nav className={open ? 'open' : ''} aria-label="Public navigation">
+      <nav id="public-navigation" className={open ? 'open' : ''} aria-label="Public navigation">
         <a href="#product" onClick={() => setOpen(false)}>Product</a>
-        <a href="#architecture" onClick={() => setOpen(false)}>Architecture</a>
         <a href="#engineering" onClick={() => setOpen(false)}>Engineering</a>
         <a href="#story" onClick={() => setOpen(false)}>Story</a>
-        <a href="#use-cases" onClick={() => setOpen(false)}>Use cases</a>
-        <a href="#builder" onClick={() => setOpen(false)}>Builder</a>
         <a href="https://github.com/nomaanmunshi/ordanis" target="_blank" rel="noreferrer"><Github size={15} />GitHub</a>
         <ThemeToggle compact />
         <Link className="nav-launch" to="/console" onClick={() => setOpen(false)}>Launch console</Link>
       </nav>
-      <button className="menu-button" onClick={() => setOpen((value) => !value)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button>
+      <button className="menu-button" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="public-navigation">{open ? <X /> : <Menu />}</button>
     </header>
-    <main><Outlet /></main>
+    <a className="marketing-skip" href="#main-content">Skip to content</a>
+    <main id="main-content"><Outlet /></main>
     <footer
       className="marketing-footer"
       onPointerMove={(event) => {
